@@ -1,0 +1,38 @@
+{
+  "name": "hono-chat",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "check-types": "bunx tsc --noEmit --pretty",
+    "check-lint": "bunx eslint .",
+    "check-format": "bunx prettier . --check",
+    "build": "bun build src/index.ts --compile --minify --sourcemap --outfile dist/myApp",
+    "start": "bun run dist/myApp",
+    "prepare": "husky",
+    "seed": "bun prisma/seeders/seed.ts",
+    "commit": "bun update && prettier --write . && bun build src/index.ts --outdir dist --sourcemap --minify && git add ."
+  },
+  "dependencies": {
+    "@prisma/client": "^6.1.0",
+    "hono": "^4.6.15",
+    "winston": "^3.17.0",
+    "zod": "^3.24.1",
+    "moment": "^2.30.1",
+    "nanoid": "^5.0.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.19.0",
+    "@typescript-eslint/parser": "^8.19.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.14.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.4.2",
+    "prisma": "^6.1.0",
+    "typescript-eslint": "^8.19.0"
+  }
+}

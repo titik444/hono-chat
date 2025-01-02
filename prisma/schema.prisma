@@ -1,0 +1,84 @@
+// Prisma schema for Chat Application with updated requirements
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ApiKeys {
+  id      Int    @id @default(autoincrement())
+  api_key String @unique
+
+  @@map("api_keys")
+}
+
+model User {
+  id              Int      @id @default(autoincrement())
+  username        String   @unique
+  email           String   @unique
+  password        String
+  fullname        String?
+  bio             String?
+  profile_picture String?
+  status          String   @default("offline") // "online", "offline", "away"
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+
+  chats    ChatParticipant[]
+  messages Message[]
+  setting  Setting?
+
+  @@map("user")
+}
+
+model Chat {
+  id         Int      @id @default(autoincrement())
+  name       String?
+  type       String   @default("private") // "private" or "group"
+  created_at DateTime @default(now())
+
+  participants ChatParticipant[]
+  messages     Message[]
+
+  @@map("chat")
+}
+
+model ChatParticipant {
+  id        Int      @id @default(autoincrement())
+  chat_id   Int
+  user_id   Int
+  joined_at DateTime @default(now())
+
+  chat Chat @relation(fields: [chat_id], references: [id])
+  user User @relation(fields: [user_id], references: [id])
+
+  @@unique([chat_id, user_id])
+  @@map("chat_participant")
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  chat_id    Int
+  sender_id  Int
+  text       String
+  created_at DateTime @default(now())
+
+  chat   Chat @relation(fields: [chat_id], references: [id])
+  sender User @relation(fields: [sender_id], references: [id])
+
+  @@map("message")
+}
+
+model Setting {
+  id            Int     @id @default(autoincrement())
+  user_id       Int     @unique
+  theme         String  @default("light") // "light" or "dark"
+  notifications Boolean @default(true)
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("setting")
+}
