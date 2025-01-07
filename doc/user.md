@@ -64,7 +64,7 @@ Request Body :
   "old_password": "rahasia",
   "new_password": "rahasia",
   "fullname": "John Doe",
-  "profilePicture": "https://titik.my.id/images/2024/11/11/1731324664026.jpg",
+  "profile_picture": "https://titik.my.id/images/2024/11/11/1731324664026.jpg",
   "bio": "Hello world"
 }
 ```

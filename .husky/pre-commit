@@ -38,3 +38,5 @@ bun run build ||
 
 # If everything passes... Now we can commit
 echo '✅ All checks passed! Proceeding with commit. ✅'
+
+git add .

@@ -3,7 +3,6 @@ import { ListUserRequest, ListUserResponse, toUserResponse, UpdateUserRequest, U
 import { prisma } from '../utils/prisma'
 import { UserValidation } from '../validation/user.validation'
 import { HTTPException } from 'hono/http-exception'
-import { AuthService } from './auth.service'
 
 export class UserService {
   static async list(request: ListUserRequest): Promise<ListUserResponse> {
