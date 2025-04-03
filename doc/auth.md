@@ -63,35 +63,13 @@ Response Body :
 }
 ```
 
-## Validate Token
-
-Endpoint : GET /api/auth/validate-token
-
-Response Body :
-
-```json
-{
-  "status": true,
-  "statusCode": 200,
-  "message": "Validate token success",
-  "data": {
-    "id": 1,
-    "username": "string",
-    "email": "email@email.com",
-    "fullname": "string",
-    "bio": "string",
-    "profilePicture": "string"
-  }
-}
-```
-
 ## Refresh Token
 
 Endpoint : POST /api/auth/refresh-token
 
 ```json
 {
-  "refresh_token": "token"
+  "refreshToken": "token"
 }
 ```
 

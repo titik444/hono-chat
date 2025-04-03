@@ -11,30 +11,30 @@
     "start": "bun run dist/myApp",
     "prepare": "husky",
     "seed": "bun prisma/seeders/seed.ts",
-    "commit": "bun update && prettier --write . && bun build src/index.ts --outdir dist --sourcemap --minify && git add ."
+    "commit": "bun update && prettier . --write . && bun build src/index.ts --outdir dist --sourcemap --minify && git add ."
   },
   "dependencies": {
-    "@prisma/client": "^6.1.0",
-    "hono": "^4.6.15",
+    "@prisma/client": "^6.5.0",
+    "hono": "^4.7.5",
     "winston": "^3.17.0",
-    "zod": "^3.24.1",
+    "zod": "^3.24.2",
     "moment": "^2.30.1",
-    "nanoid": "^5.0.9"
+    "nanoid": "^5.1.5"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
-    "@eslint/js": "^9.17.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@eslint/js": "^9.23.0",
     "@types/bun": "latest",
-    "@typescript-eslint/eslint-plugin": "^8.19.0",
-    "@typescript-eslint/parser": "^8.19.0",
-    "eslint": "^9.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "eslint": "^9.23.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.14.0",
+    "eslint-plugin-prettier": "^5.2.6",
+    "globals": "^15.15.0",
     "husky": "^9.1.7",
-    "prettier": "^3.4.2",
-    "prisma": "^6.1.0",
-    "typescript-eslint": "^8.19.0"
+    "prettier": "^3.5.3",
+    "prisma": "^6.5.0",
+    "typescript-eslint": "^8.29.0"
   }
 }

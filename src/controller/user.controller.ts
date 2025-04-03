@@ -3,6 +3,13 @@ import { ListUserRequest, UpdateUserRequest } from '../model/user.model'
 import { UserService } from '../service/user.service'
 import { response } from '../utils/response'
 import { User } from '@prisma/client'
+import { toAuthResponse } from '../model/auth.model'
+
+export const getCurrentUser = async (c: Context) => {
+  const user = c.get('user') as User
+
+  return response(c, 200, 'Get Current User success', toAuthResponse(user))
+}
 
 export const listUser = async (c: Context) => {
   const request: ListUserRequest = {

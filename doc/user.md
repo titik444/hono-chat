@@ -1,5 +1,27 @@
 # User API Spec
 
+## Get Current User
+
+Endpoint : GET /api/user/me
+
+Response Body :
+
+```json
+{
+  "status": true,
+  "statusCode": 200,
+  "message": "Get Current User success",
+  "data": {
+    "id": 1,
+    "username": "string",
+    "email": "email@email.com",
+    "fullname": "string",
+    "bio": "string",
+    "profilePicture": "string"
+  }
+}
+```
+
 ## Get List User
 
 Endpoint : GET /api/user

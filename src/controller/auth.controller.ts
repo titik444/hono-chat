@@ -1,8 +1,7 @@
 import { Context } from 'hono'
 import { AuthService } from '../service/auth.service'
 import { response } from '../utils/response'
-import { LoginUserRequest, RegisterUserRequest, toAuthResponse } from '../model/auth.model'
-import { User } from '@prisma/client'
+import { LoginUserRequest, RegisterUserRequest } from '../model/auth.model'
 
 export const registerUser = async (c: Context) => {
   const request = (await c.req.json()) as RegisterUserRequest
@@ -20,14 +19,8 @@ export const loginUser = async (c: Context) => {
   return response(c, 200, 'Login user success', loginResponse)
 }
 
-export const validateToken = async (c: Context) => {
-  const user = c.get('user') as User
-
-  return response(c, 200, 'Validate token success', toAuthResponse(user))
-}
-
 export const refreshToken = async (c: Context) => {
-  const refreshToken = (await c.req.json()).refresh_token as string
+  const refreshToken = (await c.req.json()).refreshToken as string
 
   const loginResponse = await AuthService.refreshToken(refreshToken)
 
