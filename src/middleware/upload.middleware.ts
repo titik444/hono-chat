@@ -1,6 +1,6 @@
 import path from 'path'
 import fs from 'fs'
-import { nanoid } from 'nanoid'
+import { customAlphabet } from 'nanoid'
 import { Context } from 'hono'
 import moment from 'moment'
 import { HTTPException } from 'hono/http-exception'
@@ -47,7 +47,11 @@ export const uploadMiddleware = (options: UploadOptions) => {
     fs.mkdirSync(folderPath, { recursive: true })
 
     // Tentukan nama file unik
-    const filename = nanoid(16) + fileExtension
+    const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+    // Panjang ID 10 karakter
+    const nanoid = customAlphabet(alphabet, 16)
+    const filename = nanoid() + fileExtension
     const filePath = path.join(folderPath, filename)
 
     // Simpan file ke disk

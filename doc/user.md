@@ -4,6 +4,10 @@
 
 Endpoint : GET /api/user/me
 
+Auth Required : Yes (Bearer Token)
+
+Headers : Authorization: Bearer {accessToken}
+
 Response Body :
 
 ```json
@@ -25,6 +29,12 @@ Response Body :
 ## Get List User
 
 Endpoint : GET /api/user
+
+Query Parameters:
+
+- q: string
+- page: number
+- perPage: number
 
 Response Body :
 
@@ -54,7 +64,7 @@ Response Body :
 
 ## Get User Profile
 
-Endpoint : GET /api/user/profile/{username}
+Endpoint : GET /api/user/{username}
 
 Response Body :
 
@@ -78,18 +88,20 @@ Response Body :
 
 Endpoint : PATCH /api/user/profile
 
-Request Body :
+Auth Required : Yes (Bearer Token)
 
-```json
-{
-  "username": "john",
-  "old_password": "rahasia",
-  "new_password": "rahasia",
-  "fullname": "John Doe",
-  "profile_picture": "https://titik.my.id/images/2024/11/11/1731324664026.jpg",
-  "bio": "Hello world"
-}
-```
+Headers : Authorization: Bearer {accessToken}
+
+Content-Type: multipart/form-data
+
+Form Data :
+
+- username : string
+- fullname : string
+- bio : string
+- profilePicture : file
+- oldPassword : string
+- newPassword : string
 
 Response Body :
 

@@ -7,10 +7,10 @@ export const UserRouter = new Hono()
 
 UserRouter.get('/user/me', authMiddleware, getCurrentUser)
 UserRouter.get('/user', listUser)
-UserRouter.get('/user/profile/:username', getUser)
+UserRouter.get('/user/:username', getUser)
 UserRouter.patch(
   '/user/profile',
   authMiddleware,
-  uploadMiddleware({ uploadDir: 'user', fileFieldName: 'profile_picture' }),
+  uploadMiddleware({ uploadDir: 'user', fileFieldName: 'profilePicture' }),
   updateUser
 )

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { Prisma, PrismaClient } from '@prisma/client'
 import { logger } from './logging'
 
 export const prisma = new PrismaClient({
@@ -37,3 +37,5 @@ prisma.$on('info', (e) => {
 prisma.$on('warn', (e) => {
   logger.warn(e)
 })
+
+export const { QueryMode } = Prisma

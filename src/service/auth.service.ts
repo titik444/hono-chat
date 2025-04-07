@@ -89,10 +89,7 @@ export class AuthService {
 
     return {
       ...toAuthResponse(user),
-      accessToken: await signJWT(
-        { id: user.id, username: user.username },
-        { exp: Math.floor(Date.now() / 1000) + ACCESS_TOKEN_EXPIRATION }
-      ),
+      accessToken: await signJWT({ id: user.id }, { exp: Math.floor(Date.now() / 1000) + ACCESS_TOKEN_EXPIRATION }),
       refreshToken: refreshToken
     }
   }
@@ -111,12 +108,9 @@ export class AuthService {
   }
 
   private static async generateAuthResponse(user: User): Promise<AuthResponse> {
-    const accessToken = await signJWT(
-      { id: user.id, username: user.username },
-      { exp: Math.floor(Date.now() / 1000) + ACCESS_TOKEN_EXPIRATION }
-    )
+    const accessToken = await signJWT({ id: user.id }, { exp: Math.floor(Date.now() / 1000) + ACCESS_TOKEN_EXPIRATION })
     const refreshToken = await signJWT(
-      { id: user.id, username: user.username },
+      { id: user.id },
       { exp: Math.floor(Date.now() / 1000) + REFRESH_TOKEN_EXPIRATION }
     )
 

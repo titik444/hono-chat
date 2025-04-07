@@ -1,16 +1,17 @@
 import { User } from '@prisma/client'
 
 export type ListUserRequest = {
+  keyword: string
   page: number
-  per_page: number
+  perPage: number
 }
 
 export type UpdateUserRequest = {
   username?: string
-  old_password?: string
-  new_password?: string
+  oldPassword?: string
+  newPassword?: string
   fullname?: string
-  profile_picture?: string
+  profilePicture?: string
   bio?: string
 }
 

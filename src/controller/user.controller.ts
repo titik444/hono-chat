@@ -13,8 +13,9 @@ export const getCurrentUser = async (c: Context) => {
 
 export const listUser = async (c: Context) => {
   const request: ListUserRequest = {
+    keyword: c.req.query('q')?.toString() || '',
     page: Number(c.req.query('page')) || 1,
-    per_page: Number(c.req.query('per_page')) || 10
+    perPage: Number(c.req.query('perPage')) || 10
   }
 
   const listUserResponse = await UserService.list(request)
@@ -37,10 +38,10 @@ export const updateUser = async (c: Context) => {
 
   const request: UpdateUserRequest = {
     username: formData.get('username')?.toString() || undefined,
-    old_password: formData.get('old_password')?.toString() || undefined,
-    new_password: formData.get('new_password')?.toString() || undefined,
+    oldPassword: formData.get('oldPassword')?.toString() || undefined,
+    newPassword: formData.get('newPassword')?.toString() || undefined,
     fullname: formData.get('fullname')?.toString() || undefined,
-    profile_picture: c.get('uploadedFilePath') as unknown as string,
+    profilePicture: c.get('uploadedFilePath') as unknown as string,
     bio: formData.get('bio')?.toString() || undefined
   }
 
