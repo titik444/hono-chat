@@ -31,7 +31,39 @@ model User {
   messages Message[]
   setting  Setting?
 
+  sentRequests     FriendRequest[] @relation("RequestFrom")
+  receivedRequests FriendRequest[] @relation("RequestTo")
+
+  friends  Friend[] @relation("UserFriends")
+  friendOf Friend[] @relation("FriendOf")
+
   @@map("user")
+}
+
+model FriendRequest {
+  id         Int      @id @default(autoincrement())
+  from_id    Int
+  to_id      Int
+  created_at DateTime @default(now())
+
+  from User @relation("RequestFrom", fields: [from_id], references: [id])
+  to   User @relation("RequestTo", fields: [to_id], references: [id])
+
+  @@unique([from_id, to_id])
+  @@map("friend_request")
+}
+
+model Friend {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  friend_id  Int
+  created_at DateTime @default(now())
+
+  user   User @relation("UserFriends", fields: [user_id], references: [id])
+  friend User @relation("FriendOf", fields: [friend_id], references: [id])
+
+  @@unique([user_id, friend_id])
+  @@map("friend")
 }
 
 model Chat {

@@ -14,8 +14,8 @@
     "commit": "bun update && prettier . --write . && bun build src/index.ts --outdir dist --sourcemap --minify && git add ."
   },
   "dependencies": {
-    "@prisma/client": "^6.5.0",
-    "hono": "^4.7.5",
+    "@prisma/client": "^6.6.0",
+    "hono": "^4.7.6",
     "winston": "^3.17.0",
     "zod": "^3.24.2",
     "moment": "^2.30.1",
@@ -24,17 +24,17 @@
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
-    "@eslint/js": "^9.23.0",
+    "@eslint/js": "^9.24.0",
     "@types/bun": "latest",
-    "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@typescript-eslint/parser": "^8.29.0",
-    "eslint": "^9.23.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.1",
+    "@typescript-eslint/parser": "^8.29.1",
+    "eslint": "^9.24.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.6",
     "globals": "^15.15.0",
     "husky": "^9.1.7",
     "prettier": "^3.5.3",
-    "prisma": "^6.5.0",
-    "typescript-eslint": "^8.29.0"
+    "prisma": "^6.6.0",
+    "typescript-eslint": "^8.29.1"
   }
 }

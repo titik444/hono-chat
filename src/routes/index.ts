@@ -3,6 +3,7 @@ import { prisma } from '../utils/prisma'
 import { AuthRouter } from './auth.route'
 import { UserRouter } from './user.route'
 import { ChatRouter } from './chat.route'
+import { FriendRouter } from './friend.route'
 
 export const routes = (app: Hono) => {
   app.get('/health', async (c) => {
@@ -22,6 +23,7 @@ export const routes = (app: Hono) => {
 
   Router.route('/', AuthRouter)
   Router.route('/', UserRouter)
+  Router.route('/', FriendRouter)
   Router.route('/', ChatRouter)
 
   app.route('/api', Router)

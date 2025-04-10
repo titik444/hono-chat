@@ -3,8 +3,8 @@ import { z, ZodType } from 'zod'
 export class UserValidation {
   static readonly LIST: ZodType = z.object({
     keyword: z.string().max(100).optional(),
-    page: z.number().min(1).positive(),
-    perPage: z.number().min(1).max(100).positive()
+    page: z.number().min(1).positive().default(1),
+    perPage: z.number().min(1).max(100).positive().default(10)
   })
 
   static readonly GET: ZodType = z.string().min(3).max(100)

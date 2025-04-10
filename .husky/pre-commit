@@ -1,5 +1,7 @@
 echo '🏗️👷 Preparing your project: Styling, linting, type-checking, and building before committing...'
 
+bun run format
+
 # Check Prettier standards
 bun run check-format ||
 (

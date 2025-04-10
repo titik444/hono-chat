@@ -4,6 +4,8 @@
 
 Endpoint : POST /api/auth/register
 
+Request Body :
+
 ```json
 {
   "username": "string",
@@ -36,6 +38,8 @@ Response Body :
 
 Endpoint : POST /api/auth/login
 
+Request Body :
+
 ```json
 {
   "email": "string",
@@ -66,6 +70,8 @@ Response Body :
 ## Refresh Token
 
 Endpoint : POST /api/auth/refresh-token
+
+Request Body :
 
 ```json
 {
